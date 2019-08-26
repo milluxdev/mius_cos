@@ -1,0 +1,9 @@
+version: 1.1.4
+files:
+  - url: mius Setup 1.1.4.exe
+    sha512: uD8qOjwY69sv6IA7v3xOu5yep3koW4Zq/ALkxSGLTP4AG4kxv5lrbvgWM9OTIAZ0gtTCEhTeLMPuFCwXDvruGQ==
+    size: 48030909
+path: mius Setup 1.1.4.exe
+sha512: uD8qOjwY69sv6IA7v3xOu5yep3koW4Zq/ALkxSGLTP4AG4kxv5lrbvgWM9OTIAZ0gtTCEhTeLMPuFCwXDvruGQ==
+releaseDate: '2019-08-26T03:57:26.870Z'
+releaseNotes: '更新提示！'

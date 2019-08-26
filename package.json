@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cos-nodejs-sdk-v5": "^2.5.12"
+    "cos-nodejs-sdk-v5": "^2.5.12",
+    "js-yaml": "^3.13.1"
   }
 }
