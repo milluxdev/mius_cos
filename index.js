@@ -3,9 +3,15 @@ var path = require('path');
 var config = require('./config');
 var fs = require('fs');
 var jsyaml = require('js-yaml');
+
+var arg = process.argv.splice(2);
+var secretId = arg[0]
+var secretKey = arg[1]
+var bucket = arg[2]
+var region = arg[3]
 var cos = new COS({
-    SecretId: config.SecretId,
-    SecretKey: config.SecretKey,
+    SecretId: secretId,
+    SecretKey: secretKey,
     FileParallelLimit: 3, // 控制文件上传并发数
     ChunkParallelLimit: 8, // 控制单个文件下分片上传并发数，在同园区上传可以设置较大的并发数
     ChunkSize: 1024 * 1024 * 8, // 控制分片大小，单位 B，在同园区上传可以设置较大的分片大小
@@ -20,8 +26,8 @@ var filepath = path.resolve(__dirname, filename);
 var blockmap_path = path.resolve(__dirname, blockmap);
 var yml_path = path.resolve(__dirname, yml_file);
 cos.putObject({
-    Bucket: config.Bucket,
-    Region: config.Region,
+    Bucket: bucket,
+    Region: region,
     Key: 'win32/'+filename,
     /* 必须 */
     onTaskReady: function (tid) {
@@ -34,8 +40,8 @@ cos.putObject({
     ContentLength: fs.statSync(filepath).size
 });
 cos.putObject({
-    Bucket: config.Bucket,
-    Region: config.Region,
+    Bucket: bucket,
+    Region: region,
     Key: 'win32/'+yml_file,
     /* 必须 */
     onTaskReady: function (tid) {
@@ -48,8 +54,8 @@ cos.putObject({
     ContentLength: fs.statSync(yml_path).size
 });
 cos.putObject({
-    Bucket: config.Bucket,
-    Region: config.Region,
+    Bucket: bucket,
+    Region: region,
     Key: 'win32/'+blockmap,
     /* 必须 */
     onTaskReady: function (tid) {
