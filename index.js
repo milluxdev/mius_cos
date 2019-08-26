@@ -1,6 +1,5 @@
 var COS = require('cos-nodejs-sdk-v5');
 var path = require('path');
-var config = require('./config');
 var fs = require('fs');
 var jsyaml = require('js-yaml');
 
