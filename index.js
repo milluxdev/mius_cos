@@ -8,6 +8,7 @@ var secretId = arg[0]
 var secretKey = arg[1]
 var bucket = arg[2]
 var region = arg[3]
+var dir = arg[4]
 var cos = new COS({
     SecretId: secretId,
     SecretKey: secretKey,
@@ -27,7 +28,7 @@ var yml_path = path.resolve(__dirname, yml_file);
 cos.putObject({
     Bucket: bucket,
     Region: region,
-    Key: 'win32/'+filename,
+    Key: dir + '/' + filename,
     /* 必须 */
     onTaskReady: function (tid) {
         TaskId = tid;
@@ -41,7 +42,7 @@ cos.putObject({
 cos.putObject({
     Bucket: bucket,
     Region: region,
-    Key: 'win32/'+yml_file,
+    Key: dir + '/' + yml_file,
     /* 必须 */
     onTaskReady: function (tid) {
         TaskId = tid;
@@ -55,7 +56,7 @@ cos.putObject({
 cos.putObject({
     Bucket: bucket,
     Region: region,
-    Key: 'win32/'+blockmap,
+    Key: dir + '/' + blockmap,
     /* 必须 */
     onTaskReady: function (tid) {
         TaskId = tid;
